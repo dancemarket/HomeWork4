@@ -13,6 +13,6 @@ public class CacheFibonacci {
                 arry[i] = arry[i-2] + arry[i-1];
             }
         }
-    
+        System.out.println(arry[2]);
     }
 }
