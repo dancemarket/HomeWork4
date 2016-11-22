@@ -12,9 +12,13 @@ public class HomeWork1177 {
 	// {[]} => 성공
 	// {[}] => 실패
 	// stack을 이용하면 돼
+	public static void main(String[] args) {
+		System.out.println(check("df{{,,...}}}d"));
+	}
 
-	public static boolean check(String data) {
-		// todo 구현
-		return false;
+	public static String check(String data) {
+		String iget = data;
+		iget = iget.replaceAll("[^{,^},^[,^]]", "");
+		return iget;
 	}
 }
