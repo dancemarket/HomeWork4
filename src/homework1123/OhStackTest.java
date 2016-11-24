@@ -15,11 +15,11 @@ public class OhStackTest {
 
         assertTrue(stack.empty());
 
-        stack.push('(');
+        stack.push("(");
         assertFalse(stack.empty());
 
-        assertTrue(stack.peek() == '(');
-        assertTrue(stack.pop() == '(');
+        assertTrue(stack.peek() == "(");
+        assertTrue(stack.pop() == "(");
 
         assertTrue(stack.empty());
     }
