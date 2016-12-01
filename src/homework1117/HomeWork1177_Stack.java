@@ -8,7 +8,7 @@ import homework1123.OhStack;
 public class HomeWork1177_Stack {
 
     public static void main(String[] args) {
-        System.out.println(check("[{()()}]"));
+        System.out.println(check("[{()}][{()()}]"));
     }
 
     public static boolean check(String data) {
@@ -17,6 +17,11 @@ public class HomeWork1177_Stack {
         ohStack.push((Character.toString(data.charAt(0))));
         System.out.println(ohStack.peek());
         */
+        //홀수로 들어왔으면 바로 종료
+        if (data.length()%2 !=0 ){
+            return false;
+        }
+
         for (int i = 0; i < data.length(); i++) {
             if ((Character.toString(data.charAt(i))).equals("(")
                     || (Character.toString(data.charAt(i))).equals("{")
