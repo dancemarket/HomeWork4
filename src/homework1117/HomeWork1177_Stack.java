@@ -2,13 +2,25 @@ package homework1117;
 
 import homework1123.OhStack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ola on 2016. 11. 17..
  */
 public class HomeWork1177_Stack {
+    public static Map<String, String> mapRule = new HashMap<>();
 
     public static void main(String[] args) {
-        System.out.println(check("[{()}][{()()}]"));
+        ruleCheck();
+        System.out.println(check("<[{()}][{()()}]>"));
+    }
+    public static void ruleCheck(){
+        mapRule.put("(", ")");
+        mapRule.put("{", "}");
+        mapRule.put("[", "]");
+        mapRule.put("<", ">");
+        //System.out.println("ruleCheck 구동되니?");
     }
 
     public static boolean check(String data) {
@@ -17,45 +29,35 @@ public class HomeWork1177_Stack {
         ohStack.push((Character.toString(data.charAt(0))));
         System.out.println(ohStack.peek());
         */
-        //홀수로 들어왔으면 바로 종료
+        //홀수로 들어왔으면 바로 종료 --> 속도향상?
         if (data.length()%2 !=0 ){
             return false;
         }
 
         for (int i = 0; i < data.length(); i++) {
-            if ((Character.toString(data.charAt(i))).equals("(")
-                    || (Character.toString(data.charAt(i))).equals("{")
-                    || (Character.toString(data.charAt(i))).equals("[")){
-                ohStack.push((Character.toString(data.charAt(i))));
+            String current = Character.toString(data.charAt(i));
+            if (mapRule.containsKey(current)) {
+                ohStack.push(current);
                 //if 잘 돌아가는지 확인
-                //System.out.println(OhStack.peek());
-            }else if ((Character.toString(data.charAt(i))).equals(")")){
-                if (((ohStack.peek()).equals("("))){
-                    //if 잘 돌아가는지 확인
-                    //System.out.println(OhStack.peek());
-                    ohStack.pop();
-                }else{
-                    return false;
-                }
+                //System.out.print("if문 구동 되며 저장된 값은 : ");
+                //System.out.println(ohStack.peek());
             }else {
-                if ((Character.toString(data.charAt(i))).equals("}")) {
-                    if (((ohStack.peek()).equals("{"))) {
-                        ohStack.pop();
-                    } else {
-                        return false;
-                    }
-                } else {
-                    if (((ohStack.peek()).equals("["))) {
-                        ohStack.pop();
-                    } else {
-                        return false;
-                    }
+                String top = ohStack.pop();
+                //System.out.println("top의 값은 : " + top);
+                if (isPair(top, current)) {
+                    //System.out.println("isNotPair 구동중?");
+                    return false;
                 }
             }
         }
-        if (ohStack.empty()){
-            return true;
+        return ohStack.empty();
+    }
+    public static boolean isPair(String top, String current){
+        //HashMap에서 key와 value값 비교 할 수 있게
+        String compare = mapRule.get(top);
+        if (compare.equals(current)) {
+            return false;
         }
-        return false;
+        return true;
     }
 }
