@@ -1,4 +1,4 @@
-package homework1201;
+package homework1201_LinkedList;
 
 /**
  * Created by 205-121 on 2016-12-02.

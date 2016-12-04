@@ -1,4 +1,4 @@
-package homework1117;
+package homework1117_BracketCheck;
 
 /**
  * Created by ola on 2016. 11. 17..
@@ -6,7 +6,7 @@ package homework1117;
 public class HomeWork1177 {
 
 	public static void main(String[] args) {
-		System.out.println(check("uf{}u[]iyg[]iug"));
+		System.out.println(check("dsg{}hdh[][]"));
 	}
 
 	public static boolean check(String data) {
@@ -47,3 +47,4 @@ public class HomeWork1177 {
         return false;
     }
 }
+
