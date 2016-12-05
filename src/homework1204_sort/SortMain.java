@@ -8,7 +8,9 @@ import java.util.Arrays;
 public class SortMain {
     public static void main(String[] args) {
         BubbleSort bubble = new BubbleSort();
-        int[] array = {5,4,8,3,9,5,2,7,1,13,11,0};
+        MergeSort mergeSort = new MergeSort();
+        int[] array = {5,1,6,3,5,9,2,8};
         System.out.println(Arrays.toString(bubble.bubble_sort(array)));
+        System.out.println(Arrays.toString(mergeSort.merge_sort(array)));
     }
 }
