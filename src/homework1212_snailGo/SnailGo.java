@@ -5,7 +5,7 @@ package homework1212_snailGo;
  */
 public class SnailGo {
     public int snailGo(int A, int B, int V){
-        int day = (int)((double)(V-B)/(double)(A-B) + 0.9999);
+        int day = (int)Math.ceil((double)(V-B)/(double)(A-B));
         return day;
     }
 }
