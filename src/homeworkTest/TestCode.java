@@ -1,16 +1,17 @@
 package homeworkTest;
 
+import java.util.HashMap;
+
 /**
  * Created by dhgof_000 on 2016-12-29.
  */
 public class TestCode {
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++){
-            if (i == 6 || i == 8){
-                break;
-            }
-            System.out.println(i);
-        }
-        System.out.println("으흠");
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "1번 인덱스에 넣어봄");
+        map.put(100, "100번 인덱스에 넣어봄");
+        System.out.println(map.size());
+        System.out.println(map.get(100));
+        System.out.println(map.get(2));
     }
 }
