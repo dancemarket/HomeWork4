@@ -23,7 +23,7 @@ public class MedianValueMain {
                     kArray[count] = nArray[j];
                     count++;
                 }
-                total = total + kArray[1];
+                total = total + kArray[((K+1)/2)-1];
             }
         }
         System.out.println(total);
