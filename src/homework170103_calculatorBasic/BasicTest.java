@@ -21,7 +21,9 @@ public class BasicTest {
     static Stack<Character> stack = new Stack<>();
 
     public static void main(String[] args) {
-        String input = "A+B*C+(D+F)/E";     //  ABC *+ DF+ E/+
+        Scanner scan = new Scanner(System.in);
+        String input = scan.next();
+        //String input = "A+B*C+(D+F)/E";     //  ABC *+ DF+ E/+
         //String input = "A+B*C+D+F/E";        //  ABC *+ D + FE/+
         //아무것도 없는 상태
 
@@ -59,7 +61,6 @@ public class BasicTest {
             }else if (input.charAt(i) == '('){
                 stack.push(input.charAt(i));
             }else if (input.charAt(i) == ')'){
-                System.out.println(resultStr);
                 while (priorityRule.get(input.charAt(i)) != priorityRule.get(stack.peek())){
                     resultStr = resultStr + stack.pop();
                 }
