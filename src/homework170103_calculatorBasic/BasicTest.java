@@ -23,6 +23,7 @@ public class BasicTest {
     public static void main(String[] args) {
         String input = "A+B*C+(D+F)/E";     //  ABC *+ DF+ E/+
         //String input = "A+B*C+D+F/E";        //  ABC *+ D + FE/+
+        //아무것도 없는 상태
 
         //수식의 우선순위
         priorityRule.put('(', 3);
@@ -39,36 +40,36 @@ public class BasicTest {
     private static String combie(String input){
         String resultStr = "";
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '(' || input.charAt(i) == '*' || input.charAt(i) == '/' || input.charAt(i) == '+' || input.charAt(i) == '-') {
-                try {
-                    if (priorityRule.get(input.charAt(i)) < priorityRule.get(stack.peek())) {
+            //수식과 변수 구분해서 넣어주는 작업
+            if (input.charAt(i) == '*' ||input.charAt(i) == '/' || input.charAt(i) == '+' || input.charAt(i) == '-'){
+                // 이거 stack.top 값 확인해보고 넣을지 뺄지 확인하기
+                try{
+                    if (priorityRule.get(input.charAt(i)) < priorityRule.get(stack.peek())){
                         stack.push(input.charAt(i));
-                    } else {
-                        while(!stack.empty()){
+                    }else{
+                        while (!stack.empty()){
                             resultStr = resultStr + stack.pop();
                         }
                         stack.push(input.charAt(i));
                     }
-                } catch (NullPointerException e) {
-                    stack.push(input.charAt(i));
-                } catch (EmptyStackException e) {
+                }catch (EmptyStackException e){
                     stack.push(input.charAt(i));
                 }
-            }else if (input.charAt(i) == ')'){
-                while(!stack.empty()){
-                    System.out.println(resultStr);
-                    resultStr = resultStr + stack.pop();
-                    if (stack.peek() == '('){
-                        stack.pop();
-                        break;
-                    }
-                }
+             //괄호는 특수하게 관리
+            }else if (input.charAt(i) == '('){
                 stack.push(input.charAt(i));
+            }else if (input.charAt(i) == ')'){
+                System.out.println(resultStr);
+                while (priorityRule.get(input.charAt(i)) != priorityRule.get(stack.peek())){
+                    resultStr = resultStr + stack.pop();
+                }
+                stack.pop();
             }else{
                 resultStr = resultStr + input.charAt(i);
             }
         }
-        while(!stack.empty()){
+        //최종 남은 것들 모조리 넣어주기
+        while (!stack.empty()){
             resultStr = resultStr + stack.pop();
         }
         return resultStr;
