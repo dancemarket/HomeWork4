@@ -25,6 +25,8 @@ public class BasicTest {
         String input = scan.next();
         //String input = "A+B*C+(D+F)/E";     //  ABC *+ DF+ E/+
         //String input = "A+B*C+D+F/E";        //  ABC *+ D + FE/+
+        //String input = "A+B*C/D";          //  ABC*D/+
+        //String input = "(A/(B-C+D))*(E-A)*C";     //ABC-D+/EA-*C*
         //아무것도 없는 상태
 
         //수식의 우선순위
@@ -49,7 +51,7 @@ public class BasicTest {
                     if (priorityRule.get(input.charAt(i)) < priorityRule.get(stack.peek())){
                         stack.push(input.charAt(i));
                     }else{
-                        while (!stack.empty()){
+                        while (priorityRule.get(input.charAt(i)) >= priorityRule.get(stack.peek())){
                             resultStr = resultStr + stack.pop();
                         }
                         stack.push(input.charAt(i));
