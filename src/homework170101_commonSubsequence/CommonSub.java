@@ -12,7 +12,7 @@ public class CommonSub {
         String firstStr = scan.next();
         String secondStr = scan.next();
         String resultStr = "";
-        
+
         for (int i = 0; i < secondStr.length(); i++) {
             if (firstStr.contains(Character.toString(secondStr.charAt(i)))){
                 if (resultStr.contains(Character.toString(secondStr.charAt(i)))){

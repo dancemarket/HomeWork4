@@ -14,12 +14,12 @@ public class OhLinkedList {
     public class Node{
         int data;
         Node next;
-        //객체를 인스턴스화 시키는 순간 data와 다음 값을 가리키는 next 지정
+        //객체를 인스턴스화 시키는 순간 data설정  다음 값인 next 미정
         public Node(int data){
             this.data = data;
             this.next = null;
         }
-    }
+}
 
     //-----------------------------------------------------------------------
     //처음 입력할 addFirst라는 메소드 생성
