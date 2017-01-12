@@ -16,18 +16,18 @@ public class BinaryTree {
         level++;
     }
 
-    //뿌리노드에서 이제 왼쪽아래로 뻗어 내려가는 메소드 작성
-    public void addLeft(String data){
+    //사용자가 지정한 노드에서 이제 왼쪽아래로 뻗어 내려가는 메소드 작성
+    public void addLeft(TreeNode nodePoint, String data){
         TreeNode newNode = new TreeNode(data);
-        root.left = newNode;
+        nodePoint.left = newNode;
         newNode.parent = root;
         level++;
     }
 
-    //뿌리노드에서 이제 왼쪽아래로 뻗어 내려가는 메소드 작성
-    public void addRight(String data){
+    //사용자가 지정한 노드에서 이제 왼쪽아래로 뻗어 내려가는 메소드 작성
+    public void addRight(TreeNode nodePoint, String data){
         TreeNode newNode = new TreeNode(data);
-        root.right = newNode;
+        nodePoint.right = newNode;
         newNode.parent = root;
         level++;
     }
