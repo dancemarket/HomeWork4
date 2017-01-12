@@ -10,7 +10,7 @@ public class TreeMain {
         binaryTree.addRoot("이게 뿌리노드이다");
         binaryTree.addLeft(binaryTree.root, "뿌리에서 막 왼쪽으로 내려온 데이타");
         binaryTree.addRight(binaryTree.root, "뿌리에서 막 오른쪽으로 내려온 데이타");
-        binaryTree.addLeft(binaryTree.root.right, "뿌리에서 오른쪽의 왼쪽에 데이터");
+//        binaryTree.addLeft(binaryTree.root.right, "뿌리에서 오른쪽의 왼쪽에 데이터");
         binaryTree.addRight(binaryTree.root.right, "뿌리에서 오른쪽의 오른쪽에 데이터");
         //System.out.println(binaryTree.root.right.right.data);
         binaryTree.allPrintTree();
