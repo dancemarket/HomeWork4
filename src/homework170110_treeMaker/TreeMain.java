@@ -13,6 +13,7 @@ public class TreeMain {
 //        binaryTree.addLeft(binaryTree.root.right, "뿌리에서 오른쪽의 왼쪽에 데이터");
         binaryTree.addRight(binaryTree.root.right, "뿌리에서 오른쪽의 오른쪽에 데이터");
         //System.out.println(binaryTree.root.right.right.data);
-        binaryTree.allPrintTree();
+        binaryTree.preOrder();
+        binaryTree.postOrder();
     }
 }

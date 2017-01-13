@@ -42,29 +42,45 @@ public class BinaryTree {
         count--;
     }
 
-    //노드를 전체 돌아가면서 찾아 출력하는 것
-    public void allPrintTree(){
-        searchTree(this.root);
+    //pre-order 출력하는 것
+    public void preOrder(){
+        preSearch(this.root);
     }
-    public void searchTree(TreeNode nowNode){
+    public void preSearch(TreeNode nowNode){
         // 넘어온 노드 데이터 존재 유무 확인 후 프린트
         if (nowNode.data.equals(null)){
             return;
         }else {
             System.out.println(nowNode.data);
             try{
-                searchTree(nowNode.left);
+                preSearch(nowNode.left);
             }catch (NullPointerException e){
             }
             try{
-                searchTree(nowNode.right);
+                preSearch(nowNode.right);
+            }catch (NullPointerException e){
+            }
+        }
+    }
+    //post-order 출력하는 것
+    public void postOrder(){
+        postSearch(this.root);
+    }
+    public void postSearch(TreeNode nowNode){
+        // 넘어온 노드 데이터 존재 유무 확인 후 프린트
+        if (nowNode.data.equals(null)){
+            return;
+        }else {
+            System.out.println(nowNode.data);
+            try{
+                postSearch(nowNode.right);
+            }catch (NullPointerException e){
+            }
+            try{
+                postSearch(nowNode.left);
             }catch (NullPointerException e){
             }
 
         }
-
     }
-    //method
-    //pre-order
-
 }
