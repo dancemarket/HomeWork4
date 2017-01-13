@@ -7,13 +7,22 @@ public class TreeMain {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
 
-        binaryTree.addRoot("이게 뿌리노드이다");
-        binaryTree.addLeft(binaryTree.root, "뿌리에서 막 왼쪽으로 내려온 데이타");
-        binaryTree.addRight(binaryTree.root, "뿌리에서 막 오른쪽으로 내려온 데이타");
-//        binaryTree.addLeft(binaryTree.root.right, "뿌리에서 오른쪽의 왼쪽에 데이터");
-        binaryTree.addRight(binaryTree.root.right, "뿌리에서 오른쪽의 오른쪽에 데이터");
-        //System.out.println(binaryTree.root.right.right.data);
+        binaryTree.addRoot("P");
+        binaryTree.addLeft(binaryTree.root, "F");
+        binaryTree.addRight(binaryTree.root, "S");
+        binaryTree.addLeft(binaryTree.root.left, "B");
+        binaryTree.addRight(binaryTree.root.left, "H");
+        binaryTree.addLeft(binaryTree.root.left.right, "G");
+        binaryTree.addLeft(binaryTree.root.right, "R");
+        binaryTree.addRight(binaryTree.root.right, "Y");
+        binaryTree.addRight(binaryTree.root.right.right, "Z");
+        binaryTree.addLeft(binaryTree.root.right.right, "T");
+        binaryTree.addRight(binaryTree.root.right.right.left, "W");
+
+
+//        System.out.println(binaryTree.root.right.right.data);
         binaryTree.preOrder();
+        System.out.println("");
         binaryTree.postOrder();
     }
 }
