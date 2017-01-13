@@ -1,5 +1,7 @@
 package homework170110_treeMaker;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Stack;
 public class BinaryTree {
     TreeNode root;      //데이터 없는 뿌리 노드 생성
     Stack stack = new Stack();
+    Queue queue = new LinkedList();
 
     //뿌리노드 값을 추가하는 메소드
     public void addRoot(String data){
@@ -70,9 +73,19 @@ public class BinaryTree {
     //in-order 출력(중위형)
     public void inOrder(){
         inSearch(this.root);
+        while (!queue.isEmpty()){
+            System.out.print(queue.poll()+" ");
+        }
     }
 
-    public void inSearch(TreeNode root) {
+    public void inSearch(TreeNode nowNode) {
+        if (nowNode == null){
+            return;
+        }
+        stack.push(nowNode.data);
+        inSearch(nowNode.left);
+        queue.offer(stack.pop());
+        inSearch(nowNode.right);
 
     }
 

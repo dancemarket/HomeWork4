@@ -21,6 +21,8 @@ public class TreeMain {
 
 
 //        System.out.println(binaryTree.root.right.right.data);
+        binaryTree.inOrder();
+        System.out.println("");
         binaryTree.preOrder();
         System.out.println("");
         binaryTree.postOrder();
