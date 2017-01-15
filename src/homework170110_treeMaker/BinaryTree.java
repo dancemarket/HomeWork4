@@ -1,8 +1,6 @@
 package homework170110_treeMaker;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by dhgof_000 on 2017-01-10.
@@ -28,16 +26,6 @@ public class BinaryTree {
         TreeNode newNode = new TreeNode(data);
         nodePoint.right = newNode;
         newNode.parent = nodePoint;
-    }
-
-    //노드 삭제 하는것
-    public void rightDelete(TreeNode nodePoint){
-        nodePoint.parent = null;
-        nodePoint.parent.right = null;
-    }
-    public void leftDelete(TreeNode nodePoint){
-        nodePoint.parent = null;
-        nodePoint.parent.left = null;
     }
 
     //pre-order 출력하는 것
@@ -77,7 +65,6 @@ public class BinaryTree {
             System.out.print(queue.poll()+" ");
         }
     }
-
     public void inSearch(TreeNode nowNode) {
         if (nowNode == null){
             return;
@@ -89,4 +76,25 @@ public class BinaryTree {
 
     }
 
+    //level-order 출력
+    public void levelOrder(){
+        List arrayList = new ArrayList();
+        levelSearch(0, this.root, arrayList);
+        ArrayList<String> copyList = new ArrayList<>(arrayList);
+        String[] temp = copyList.toArray(new String[copyList.size()]);
+        System.out.println(Arrays.toString(temp));
+    }
+    public void levelSearch(int level, TreeNode nowNode, List arrayList) {
+        if (nowNode == null) {
+            return;
+        }
+        try{
+            arrayList.set(level, (String)arrayList.get(level) + nowNode.data);
+        }catch (IndexOutOfBoundsException e){
+            arrayList.add(level, nowNode.data);
+        }
+        level++;
+        levelSearch(level, nowNode.left, arrayList);
+        levelSearch(level, nowNode.right, arrayList);
+    }
 }
