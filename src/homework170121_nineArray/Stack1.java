@@ -17,7 +17,7 @@ public class Stack1 {
             array[index] = list.get(index);
             index++;
         }else {
-            System.out.println("스택을 초과 하였습니다");
+            System.out.println(number+"에 대한 작업을 하기엔"+"스택을 초과 하였습니다");
         }
     }
     public void pop(){
