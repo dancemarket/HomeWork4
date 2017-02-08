@@ -9,12 +9,12 @@ import java.util.Map;
  * Created by ola on 2016. 11. 17..
  */
 public class HomeWork1177_Stack {
-                public static Map<String, String> mapRule = new HashMap<>();
+    public static Map<String, String> mapRule = new HashMap<>();
 
-            public static void main(String[] args) {
-                ruleCheck();
-                System.out.println(check("<[{(())}][{()()}]>"));
-            }
+        public static void main(String[] args) {
+            ruleCheck();
+            System.out.println(check("<[{(())}][{()()}]>"));
+        }
             public static void ruleCheck(){
                 mapRule.put("(", ")");
                 mapRule.put("{", "}");
