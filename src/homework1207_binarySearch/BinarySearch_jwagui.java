@@ -6,7 +6,7 @@ package homework1207_binarySearch;
 public class BinarySearch_jwagui {
     public int findIndexJG(int[] array, int findNum, int firstNum, int lastNum){
         int midNum = (lastNum + firstNum)/2;
-        if(array[0] > findNum || array[array.length-1] < findNum || findNum > lastNum){
+        if(array[0] > findNum || array[array.length-1] < findNum || firstNum > lastNum){
             return -1;
         }
         if (array[midNum] < findNum){
