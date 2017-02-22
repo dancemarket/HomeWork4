@@ -42,6 +42,10 @@ public class HomeWork1177_Stack {
                         //System.out.print("if문 구동 되며 저장된 값은 : ");
                         //System.out.println(ohStack.peek());
                     }else {
+                        //스택이 비었는데 비교 검사 하려고 한다
+                        if (stack.empty()){
+                            stack.push(current);
+                        }
                         String top = ohStack.pop();
                         //System.out.println("top의 값은 : " + top);
                         if (isPair(top, current)) {
