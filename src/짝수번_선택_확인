@@ -63,7 +63,7 @@ public class Main {
 				if(outSit.length() == 0) {
 //					outSit = "( " + interKey;
 				}else if(checkShare == 0){
-					outSit = outSit + " , " + interKey + ")";
+					outSit = outSit + " , " + interKey + " )";
 					System.out.println(outSit);
 					outSit = "";
 				}
@@ -71,7 +71,7 @@ public class Main {
 				if(outSit.length() == 0) {
 					outSit = "[ " + interKey;
 				}else if(checkShare != 0){
-					outSit = " , " + interKey + " )";
+					outSit = outSit + " , " + interKey + " )";
 					System.out.println(outSit);
 					outSit = "[ " + interKey;
 				}else if(checkShare == 0){
