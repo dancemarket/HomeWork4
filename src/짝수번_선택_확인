@@ -1,0 +1,110 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String ars[]) {
+		HashMap<Integer, Integer> hashMap = new HashMap<>();
+		int[] getNum = new int[2];
+		Scanner scan = new Scanner(System.in);
+		
+		int checkFirst = 3;
+		int checkEven = 0;
+		int checkShare = 0;
+		int getGroup = 0;
+		int preNum = 0;
+		String outSit = "";
+		int interKey = 0;
+		
+		getGroup = scan.nextInt();
+		for (int j = 0; j < getGroup; j++) {//검사할 그룹 받고 포문 돌리는 횟수
+			for (int i = 0; i < getNum.length; i++) {//검사할 그룹에 받을 두 수
+				getNum[i] = scan.nextInt();
+			}
+			
+			for (int i = getNum[0]; i <= getNum[1]; i++) {
+				if (hashMap.containsKey(i)) {
+					hashMap.put(i, (hashMap.get(i)+1));
+				}else {
+					hashMap.put(i, 1);
+				}
+			}
+		}
+
+		Iterator<Integer> iterator = hashMap.keySet().iterator();
+		while(iterator.hasNext()) {
+			interKey = iterator.next();
+			checkEven = hashMap.get(interKey) % 2; //1 또는 0 저장(짝수 홀수)
+			checkShare = hashMap.get(interKey) / 2;
+			
+		
+			//최초 검사
+			if(checkFirst == 3 && checkEven == 0) {
+				System.out.println("[ - , " +interKey + " ]");
+			}else if(checkFirst == 3 && checkEven == 1) {
+				System.out.println("( - , " + interKey + " )");
+			}
+			
+			//검사 키가 짝수인경우
+			if (checkFirst == 0 && checkEven == 0) {
+				if(outSit.length() == 0) {
+					outSit = "[ " + preNum;
+				}else {
+				}
+			}else if(checkFirst == 0 && checkEven == 1) {
+				if (outSit.length() == 0) {
+					outSit = "( " + interKey;
+				}else {
+					outSit = outSit + " , " + preNum + " ]";
+					System.out.println(outSit);
+					outSit = "( " + interKey;
+				}
+			}else if (checkFirst == 1 && checkEven == 1) {//검사 키가 홀수
+				if(outSit.length() == 0) {
+//					outSit = "( " + interKey;
+				}else if(checkShare == 0){
+					outSit = outSit + " , " + interKey + ")";
+					System.out.println(outSit);
+					outSit = "";
+				}
+			}else if(checkFirst == 1 && checkEven == 0) {
+				if(outSit.length() == 0) {
+					outSit = "[ " + interKey;
+				}else if(checkShare != 0){
+					outSit = " , " + interKey + " )";
+					System.out.println(outSit);
+					outSit = "[ " + interKey;
+				}else if(checkShare == 0){
+					//이런경우는 한번도 선택되지 않은 상태
+				}
+			}
+			
+			
+			//마지막 수 검사
+			if (!iterator.hasNext()) {
+				if (checkEven == 1) {
+					if (checkFirst == 1) {
+//						outSit = outSit + ", " + interKey + " )";
+//						System.out.println(outSit);
+					}else if(checkFirst == 0) {
+						outSit = outSit + ", " + interKey + " ]";
+						System.out.println(outSit);
+					}
+					System.out.println("( " + interKey + " , + )");
+				}else {
+					if (checkFirst == 1) {
+						outSit = outSit + ", " + interKey + " )";
+						System.out.println(outSit);
+					}else if(checkFirst == 0) {
+						outSit = outSit + ", " + interKey + " ]";
+						System.out.println(outSit);
+					}
+					System.out.println("[ " + interKey + " , + ]");
+				}
+			}
+			//다음 검사를 위해 저장
+			preNum = interKey;
+			checkFirst = checkEven;
+		}
+	}
+}
